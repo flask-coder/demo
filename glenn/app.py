@@ -17,7 +17,7 @@ def getRandomDrink():
 
 def formatResults(drink):
     name = drink["strDrink"]
-    formatted = "<H1>Patrice's next drink: " + name + "</H1>"
+    formatted = "<H1>Glenn's next drink: " + name + "</H1>"
     formatted += '<p><img src=' + drink["strDrinkThumb"] + '/preview>'
     formatted += '<ul>'
     count = 1
