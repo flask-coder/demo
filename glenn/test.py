@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Woohoo! Heroku works!!"
+    return "Heroku works!!"
 
 port = int(os.environ.get('PORT', 84))
 app.run(host='0.0.0.0', port=port)
