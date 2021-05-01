@@ -1,1 +1,1 @@
-web: python3 glenn/app.py
+web: python3 test/app.py
