@@ -28,5 +28,5 @@ def formatResults(drink):
     formatted += '<p><button onClick="window.location.reload();">Give Me Another!</button>'
     return formatted
 
-port = int(os.environ.get('PORT', 84))
+port = int(os.environ.get('PORT', 83))
 app.run(host='0.0.0.0', port=port)

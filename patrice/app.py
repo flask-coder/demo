@@ -11,7 +11,7 @@ def index():
     # render index html to user
     return render_template('index.html')
 
-# SEARCH/DISPLAY DRINK
+# SEARCH DRINK
 @app.route('/search', methods=['GET','POST'])
 def search():
     # if POST request, search for cocktail name provided by user
