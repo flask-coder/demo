@@ -5,6 +5,12 @@ import os
 
 app = Flask(__name__)
 
+# HOME PAGE
+# @app.route('/')
+# def index():
+#     # render index html to user
+#     return render_template('index.html')
+
 # SEARCH DRINK
 @app.route('/search', methods=['GET','POST'])
 def search():
@@ -18,7 +24,6 @@ def search():
         drink_dictionary = extractDrinkData(drink_details)
         return render_template('displayDrink.html', drink_dictionary=drink_dictionary)
     else:
-        # render search drink
         return render_template('searchDrink.html')
 
 # RANDOM DRINK
@@ -38,13 +43,27 @@ def getRandomDrink():
 def getDrink(drinkName):
     response = requests.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drinkName)
     json_object = json.loads(response.text)
+    # {"drinks":[{
+    # "strDrink":"Nutty Irishman",
+    # "strInstructions":"Serve over ice",
+    # "strDrinkThumb":"https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xspupx1441248014.jpg",
+    # "strIngredient1":"Baileys irish cream","strIngredient2":"Frangelico","strIngredient3":"Milk",
+    # "strMeasure1":"1 part ","strMeasure2":"1 part ","strMeasure3":"1 part "
+    # ]}
     return json_object["drinks"][0]
 
 # EXTRACT DRINK DATA
 def extractDrinkData(drink_data): 
     # drink_data = {
-    name = drink_data["strDrink"]
-    img = drink_data["strDrinkThumb"] + '/preview'
+        # "strDrink":"Nutty Irishman",
+        # "strInstructions":"Serve over ice",
+        # "strDrinkThumb":"https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xspupx1441248014.jpg",
+        # "strIngredient1":"Baileys irish cream","strIngredient2":"Frangelico","strIngredient3":"Milk",
+        # "strMeasure1":"1 part ","strMeasure2":"1 part ","strMeasure3":"1 part "
+    # }
+
+    name = drink_data["strDrink"] # Nutty Irishman
+    img = drink_data["strDrinkThumb"] + '/preview' # https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xspupx1441248014.jpg
     ingredients_list = []
     count = 1
     while str(drink_data["strIngredient" + str(count)]) != "None":
@@ -52,13 +71,13 @@ def extractDrinkData(drink_data):
         ingredient = drink_data["strIngredient" + str(count)]
         # get measurement
         measurement = drink_data["strMeasure" + str(count)] or ''
-        # add measurement and ingredient to ingredients list
+        # ["1 part Baileys irish cream", "1 part Frangelico", "1 park Milk"]
         ingredients_list.append(measurement + ' ' + ingredient)
         count += 1
     instructions = drink_data["strInstructions"] # Serve over ice
-    # create a drink dictionary containing name, image, ingredients list and instructions
+    # {'name': "Nutty Irishman", 'img': "https:\/\/www.thecocktaildb.com\/images\/media\/drink\/xspupx1441248014.jpg/preview", 'ingredients_list' : ["1 part Baileys irish cream", "1 part Frangelico", "1 park Milk"], 'instructions': "Serve over ice" }
     drink_dictionary = {'name': name, 'img': img, 'ingredients_list' : ingredients_list, 'instructions': instructions }
     return drink_dictionary
 
-port = int(os.environ.get('PORT', 82))
+port = int(os.environ.get('PORT', 84))
 app.run(host='0.0.0.0', port=port)

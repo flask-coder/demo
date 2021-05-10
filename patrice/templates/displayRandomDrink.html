@@ -1,22 +1,31 @@
 <!doctype html>
-<!-- name of tab -->
-<title> Drink </title>
-<!-- name of drink -->
-<h1> Drink Name: {{drink_dictionary["name"]}} </h1>
-<!-- image of drink -->
-<img src={{drink_dictionary["img"]}}>
-<!-- list ingredients -->
-<h2> Ingredients: </h2>
-<ul>
-{% for ingredient in drink_dictionary["ingredients_list"] %}
-<li> {{ingredient}} </li>
-{% endfor %}
-</ul>
-<!-- instructions -->
-<h2> Instructions:</h2>
-<p> {{drink_dictionary["instructions"]}} </p>
-
-<!-- navigation -->
-<a class='btn btn-primary' href="{{url_for('random')}}"> ANOTHER DRINK! </a>
-<a class='btn btn-primary' href="{{url_for('index')}}"> Home </a>
-<a class='btn btn-primary' href="{{url_for('search')}}"> Search Drink </a>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheet.css') }}">
+    <title> Drink Details: {{drink_dictionary["name"]}} </title>
+  </head>
+  <body> 
+    <a href="{{url_for('search')}}" id='submitbutton'>SEARCH</a>
+    <!-- name of drink -->
+    <h1> Drink Name: {{drink_dictionary["name"]}} </h1>
+    <!-- image of drink -->
+    <img src={{drink_dictionary["img"]}}>
+    <!-- list ingredients -->
+    <h2> Ingredients: </h2>
+    <ul>
+      <!-- iterate thru ingredients -->
+    {% for ingredient in drink_dictionary["ingredients_list"] %}
+    <li> {{ingredient}} </li>
+    {% endfor %}
+    </ul>
+    <!-- instructions -->
+    <h2> Instructions:</h2>
+    <p> {{drink_dictionary["instructions"]}} </p>
+    <!-- buttons -->
+    <a href="{{url_for('random')}}" class='button'>SPIN AGAIN!</a>
+  </body>
+</html>

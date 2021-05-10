@@ -1,11 +1,21 @@
 <!doctype html>
-<title>Search Drink</title>
-<h2>Search Drink</h2>
-<!-- search field -->
-<form action="/search" method="POST">
-    <p> Name: <input type="text" name="Name"/></p>
-    <p><input type = "submit" value = "submit" /></p>
-</form>
-<!-- navigation -->
-<a href="{{url_for('index')}}"> Home </a>
-<a href="{{url_for('random')}}"> Random Drink </a>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheet.css') }}">
+    <title> Search Drink </title>
+  </head>
+  <body>
+    <!-- buttons -->
+    <a href="{{url_for('random')}}" id='submitbutton'>COCKTAIL SPINNER!</a>
+    <h1> What drink do you fancy? </h1>
+    <!-- search field -->
+    <form action="/search" method="POST">
+        <p>Search: <input type="text" name="Name"/></p>
+        <p><input class='button' type="submit" value="GO" /></p>
+    </form>
+  </body>
+</html>
