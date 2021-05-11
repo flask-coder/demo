@@ -1,23 +1,9 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <!-- CSS -->
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheet.css') }}">
     </head>
     <body>
-        <!-- name -->
-        <h1>Cocktail Name: {{drink_dictionary['drink_name']}} </h1>
-        <!-- image of drink -->
-        <img src='{{drink_dictionary["drink_img"]}}'>
-        <!-- ingredient -->
-        <h2 id='ingredient_id'> Ingredients List: </h2>
-        <ul>
-            <!-- iterate thru ingredients -->
-          {% for ingredient in drink_dictionary["ingredient"] %}
-          <li> {{ingredient}} </li>
-          {% endfor %}
-        </ul>
-        <!-- instructions -->
-        <h2> Instructions: {{drink_dictionary["instructions"]}}</h2>
+        <h1>Cocktail Name: {{drink_object['name']}}</h1>
+        <h1 id='name'>Cocktail Name: {{drink_object['name']}}</h1>
     </body>
 </html>
