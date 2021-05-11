@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <!-- CSS -->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheet.css') }}">
     </head>
     <body>
-        <h1>Cocktail Name: {{drink_object['name']}}</h1>
-        <h1 id='name'>Cocktail Name: {{drink_object['name']}}</h1>
+        <h2>Our Web App!</h2>
+        <h1>Cocktail Name: {{drink_obj['drink_name']}}</h1>
+        <h1>Instructions: {{drink_obj['instructions']}}</h1>
+        <h3 id='hello'>Ingredient: {{drink_obj['ingredient']}}</h3>
     </body>
 </html>
