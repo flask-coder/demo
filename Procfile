@@ -1,1 +1,1 @@
-web: python3 demo/app.py
+web: python3 patrice/app.py
